@@ -1,0 +1,225 @@
+:root {
+    --primary-text-color: #757575;
+    --primary-white-color: #ffffff;
+    --primary-blue-color: #2196f3;
+    --primary-black-color: #212121;
+}
+body {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.03em;
+    background: #ffffff;
+    color: var(--primary-text-color);
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+button {
+    cursor: pointer;
+}
+.visually-hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+/*INDEX*/
+
+/*Style header*/
+/*Logo*/
+.logo {
+    font-family: 'Raleway', sans-serif;
+    color: #000000;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.2;
+    text-decoration: none;
+}
+.logo-web {
+    color: var(--primary-blue-color);
+}
+
+/*Navigation*/
+.nav-site a {
+    color: var(--primary-black-color);
+    font-weight: 500;
+    line-height: 1.15;
+    text-decoration: none;
+}
+.nav-site a:hover,
+.nav-site a:focus {
+    color: var(--primary-blue-color);
+}
+
+.nav-cont a {
+    color: var(--primary-text-color);
+    font-weight: 500;
+    line-height: 1.15;
+    text-decoration: none;
+}
+.nav-cont a:hover,
+.nav-cont a:focus {
+    color: var(--primary-blue-color);
+}
+
+
+/*Style main*/
+/*Hero*/
+.hero {
+    background: #2F303A;
+}
+
+.hero-text {
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 1.35;
+    color: var(--primary-white-color);
+}
+
+.hero-btn {
+    background: var(--primary-blue-color);
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.875;
+    color: var(--primary-white-color);
+    letter-spacing: 0.06em;
+    border: none;
+}
+.hero-btn:hover,
+.hero-btn:focus {
+    background: #188CE8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+/*Preference*/
+.pref-title h3 {
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--primary-black-color);
+}
+
+.pref-text p {
+    line-height: 1.7;
+}
+
+/*About*/
+.about-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.166;
+    color: var(--primary-black-color);
+}
+
+/*Team*/
+.team {
+    background-color: #F5F4FA;
+}
+
+.team-title {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.165;
+    color: var(--primary-black-color);
+}
+
+.team-bgd li {
+    background-color: var(--primary-white-color);
+}
+
+.team-name h3 {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.1875;
+    color: var(--primary-black-color);
+}
+
+.team-prof p {
+    font-size: 16px;
+    line-height: 1.1875;
+}
+
+
+/*Style footer*/
+.footer {
+    background: #2F303A;
+}
+
+.footer-logo {
+    font-family: 'Raleway', sans-serif;
+    color: var(--primary-white-color);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.192;
+}
+
+.footer-cont {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+    line-height: 1.7;
+    font-style: normal;
+}
+
+.address {
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--primary-white-color);
+    font-style: normal;
+}
+
+.footer-cont:hover,
+.footer-cont:focus {
+    color: var(--primary-blue-color);
+}
+
+.footer-logo,
+.footer-cont,
+.address {
+    text-decoration: none;
+}
+
+
+/*PORTFOLIO*/
+.portfolio-btn button{
+    font-family: 'Roboto', sans-serif;
+    background: #F5F4FA;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.625;
+    color: var(--primary-black-color);
+    border: none;
+}
+.portfolio-btn button:hover,
+.portfolio-btn button:focus {
+    background: var(--primary-blue-color);
+    box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: var(--primary-white-color);
+    border: none;
+}
+
+.port-list-title h2 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 2;
+    letter-spacing: 0.06em;
+    color: var(--primary-black-color);
+}
+
+.port-list-text p {
+    font-size: 16px;
+    line-height: 1.875;
+    color: var(--primary-text-color);
+}
