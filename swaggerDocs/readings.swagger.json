@@ -1,0 +1,291 @@
+{
+  "openapi": "3.0.3",
+  "info": {},
+  "tags": [
+    {
+      "name": "readings",
+      "description": "readings API"
+    }
+  ],
+  "paths": {
+    "/readings": {
+      "get": {
+        "tags": [
+          "readings"
+        ],
+        "summary": "Get all readings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Reading"
+                      }
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "findAll"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "readings"
+        ],
+        "summary": "Add Reading",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reading"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "created"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Reading"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/readings/{id}": {
+      "get": {
+        "tags": [
+          "readings"
+        ],
+        "summary": "Find Reading By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Reading ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Reading"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "findOne"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "readings"
+        ],
+        "summary": "Update Reading By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Reading ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reading"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "readings"
+        ],
+        "summary": "Delete Reading By ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Reading ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200"
+          },
+          "409": {
+            "$ref": "#/components/responses/409"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Reading": {
+        "type": "object",
+        "required": [
+          "name",
+          "description",
+          "level",
+          "genre",
+          "task",
+          "text"
+        ],
+        "properties": {
+          "_id": {
+            "readOnly": true,
+            "type": "string",
+            "description": "Reading ID",
+            "example": "6493605f522815586d114710"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "level": {
+            "type": "string",
+            "example": "ObjectId"
+          },
+          "genre": {
+            "type": "string"
+          },
+          "task": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "imageUrl": {
+            "type": "string"
+          },
+          "audioUrl": {
+            "type": "string"
+          },
+          "createdAt": {
+            "readOnly": true,
+            "type": "string",
+            "example": "2023-07-04T13:29:11.923Z"
+          },
+          "updatedAt": {
+            "readOnly": true,
+            "type": "string",
+            "example": "2023-07-04T13:29:11.923Z"
+          }
+        }
+      }
+    }
+  }
+}

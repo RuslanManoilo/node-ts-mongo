@@ -1,0 +1,51 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "REST API",
+    "version": "1.0.0",
+    "description": "API for the Langl mobile app"
+  },
+  "servers": [],
+  "tags": [
+  ],
+  "paths": {
+  },
+  "components": {
+    "schemas": {},
+    "responses": {
+      "200": {
+        "description": "OK"
+      },
+      "400": {
+        "description": "Bad Request"
+      },
+      "409": {
+        "description": "Conflict"
+      },
+      "500": {
+        "description": "Server Error"
+      }
+    },
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {
+      "token": {
+        "description": "Token",
+        "schema": {
+          "type": "string",
+          "example": "xxxxx.yyyyy.zzzzz"
+        }
+      }
+    },
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-authorization-token"
+      }
+    },
+    "links": {},
+    "callbacks": {}
+  }
+}
