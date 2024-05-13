@@ -51,6 +51,21 @@ export class CommentController {
         
     }
 
+    public likeOne = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const id: string = req.params.id;
+
+            isValidMongoObjectId(id);
+
+            const body: IComment = req.body;
+            const likedDoc: Comment = await this.service.likeOne(id, body);
+
+            res.status(200).json({ data: likedDoc, message: 'liked' });
+        } catch (error) {
+            next(error);
+        }
+    }
+
     public deleteOne = async (req: Request, res: Response, next: NextFunction) => {
         try {
             const id: string = req.params.id;

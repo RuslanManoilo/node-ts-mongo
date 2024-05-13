@@ -1,5 +1,8 @@
 import { IComment } from '@/models/comment.model';
-import { IsBoolean, IsNotEmpty, IsOptional, IsString, IsUrl } from 'class-validator';
+import { toMongoObjectId } from '@/utils/dto';
+import { Transform } from 'class-transformer';
+import { IsNotEmpty, IsOptional, IsString, IsUrl } from 'class-validator';
+import { Types } from 'mongoose';
 
 
 export class CreateCommentDto 
@@ -7,8 +10,8 @@ export class CreateCommentDto
         Required<
             Omit<
                 IComment, 
-                | 'reading' 
-                | 'likeCounter' 
+                | 'likes' 
+                | 'likesCounter' 
                 | 'avatarUrl'
                 | 'createdAt' 
                 | 'updatedAt' 
@@ -24,8 +27,8 @@ export class CreateCommentDto
   public text: string;
 
   @IsNotEmpty()
-  @IsBoolean()
-  public like: boolean = false;
+  @Transform(toMongoObjectId)
+  public reading: Types.ObjectId;
 
   @IsOptional()
   @IsUrl()

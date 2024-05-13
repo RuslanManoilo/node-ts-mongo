@@ -76,7 +76,6 @@ export class ReadingService {
     return updateReactionsById;
   }
 
-
   public async deleteOne(id: string): Promise<Reading> {
     const deleteOneById: Reading = await ReadingModel.findByIdAndDelete({ _id: new Types.ObjectId(id) });
     if (!deleteOneById) {

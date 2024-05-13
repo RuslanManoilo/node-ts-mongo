@@ -6,8 +6,8 @@ export interface IComment extends IPropCreatedAt, IPropUpdatedAt {
   username: string;
   text: string;
   reading: Types.ObjectId;
-  like: boolean;
-  likeCounter: number;
+  likes: Types.ObjectId[];
+  likesCounter: number;
   avatarUrl: string;
 }
 
@@ -30,12 +30,12 @@ const CommentSchema: Schema = new Schema<IComment, ICommentModel>(
       type: Schema.Types.ObjectId,
       ref: ReadingModel,
     },
-    like: {
+    likes: {
       required: true,
-      type: Boolean,
-      default: false,
+      type: [Schema.Types.ObjectId],
+      default: []
     },
-    likeCounter: {
+    likesCounter: {
       required: true,
       type: Number,
       default: 0,

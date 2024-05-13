@@ -24,25 +24,32 @@ export class CommentService {
 
   public async updateOne(id: string, data: IComment): Promise<Comment> {
     const comment = await CommentModel.findById(id);
-    console.log(comment);
-    if (!comment) throw new HttpException(409, `Comment ${id} doesn't exist`);
-    
-
-    if (data.like && comment.like === false) {
-        comment.likeCounter++;
-        await comment.save();
-    } if (!data.like && comment.like === true) {
-        comment.likeCounter--;
-        await comment.save();
-    }
+    if (!comment) throw new HttpException(409, `Comment with id ${id} doesn't exist`);
 
     const updateOneById: Comment = await CommentModel.findByIdAndUpdate({ _id: new Types.ObjectId(id) }, data, { new: true });
-    if (!updateOneById) throw new HttpException(409, `Comment with id "${id}" doesn't exist`);
 
     return updateOneById;
   }
 
-  public async deleteOne(id: string): Promise<Comment> {
+  public async likeOne(id: string, data: IComment): Promise<Comment> {
+    const testUser = data.reading; // test User
+    const comment = await CommentModel.findById(id);
+    if (!comment) throw new HttpException(409, `Comment with id ${id} doesn't exist`);
+
+    const alreadyLiked = comment.likes.some(userId => userId.equals(testUser));
+    if (!alreadyLiked) {
+      comment.likes.push(testUser);
+    } else {
+      comment.likes = comment.likes.filter(userId => !userId.equals(testUser));
+    }
+  
+    comment.likesCounter = comment.likes.length;
+    comment.save();
+
+    return comment;
+  }
+
+  public async deleteOne(id: string): Promise<Comment> { 
     const deleteOneById: Comment = await CommentModel.findByIdAndDelete({ _id: new Types.ObjectId(id) });
     
     if (!deleteOneById) throw new HttpException(409, `Comment with id "${id}" doesn't exist`);
