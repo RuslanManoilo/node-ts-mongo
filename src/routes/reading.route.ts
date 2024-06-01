@@ -19,11 +19,7 @@ export class ReadingRoute implements Routes {
     this.router.get(`${this.path}/:id`, this.controller.getOneById);
     this.router.post(`${this.path}`, ValidationMiddleware(CreateReadingDto), this.controller.createOne);
     this.router.put(`${this.path}/:id`, ValidationMiddleware(CreateReadingDto, true, true), this.controller.updateOne);
-    this.router.put(
-      `${this.path}/reactions/:id`,
-      ValidationMiddleware(UpdateReactionsDto, true, true),
-      this.controller.updateReactions,
-    );
+    this.router.put(`${this.path}/reactions/:id`, ValidationMiddleware(UpdateReactionsDto, true, true), this.controller.updateReactions);
     this.router.delete(`${this.path}/:id`, this.controller.deleteOne);
   }
 }
